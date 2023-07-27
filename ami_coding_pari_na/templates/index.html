@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="content container-fluid">
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <!-- <div class="alert" {% if message.tags %} class="{{ message.tags }}" {%endif %} role="alert">{{ message }} -->
+        <div class="alert{% if message.tags %} {{ message.tags }} {% endif %}" role="alert">{{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Basic Info</h5>
+                </div>
+                <div class="card-body">
+                    <div class="justify-content-center">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row mt-5">
+                                <div class="form-group">
+                                    <label>Input Values</label>
+                                    <input class="form-control" name="input_items" type="text" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Search Value</label>
+                                    <input class="form-control" name="search_value" type="number" value=""/>
+                                </div>
+                            </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Khoj</button>
+                        </div>
+                    </form>
+                        <div class="pt-3">
+                            <strong>Result: {{ result }}</strong>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Response user input values</h5>
+                </div>
+                <div class="card-body">
+                    <form method="get" action="">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6">
+                                    <select name="user" class="form-control">
+                                        {% for user in user_list %}
+                                            <option value="{{ user.id }}">{{ user.f_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <input class="form-control" type="datetime-local" name="from_datetime" required>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <input class="form-control" type="datetime-local" name="to_datetime" required>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <button class="btn btn-primary" type="submit">Get</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <div>
+                        {% if input_values %}
+                        {{ input_values }}
+                        {% endif %}
+
+<!--                        {% for key1,value1 in json.document.items %}-->
+<!--                            <div class="section">-->
+<!--                                <h4><a href="#" class="section_toggle"></a> {{ key1|title }}:</h4>-->
+<!--                                <table class="table table-condensed">-->
+<!--                                    {% for key2,value2 in value1.items %}-->
+<!--                                    {{ key2 }}-->
+<!--                                    {% endfor %}-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        {% endfor %}-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load static %}
+<div class="header header-one">
+        <ul class="nav nav-tabs user-menu">
+
+            <li class="nav-item dropdown has-arrow main-drop">
+                <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                    <span class="user-img">
+                        {{ request.user.email }}
+                        <span class="status online"></span>
+                    </span>
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i data-feather="log-out" class="me-1"></i> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="content container-fluid">
+
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Permission</h3>
+                <ul class="breadcrumb">
+                    <li><a href="{% url 'home' %}">Dashboard / </a></li>
+                    <li class="breadcrumb-item active"> Permission</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>User Permission</h2>
+                </div>
+                <div class="card-body">
+
+
+                    <form method='post' action=''>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+<!--                        <div class="form-group row">-->
+<!--                            <label for="id_course_name" class="col-form-label col-md-2">Course name:</label>-->
+<!--                            <div class="col-md-10">-->
+<!--                            <select class="form-select" name="course_name" required="" id="id_course_name">-->
+<!--                                <option value="0" selected="">Course Name</option>-->
+<!--                                {% for course in courses %}-->
+<!--                                <option value="{{ course.id }}">{{ course.course_name }}</option>-->
+<!--                                {% endfor %}-->
+<!--                            </select>-->
+<!--                          </div>-->
+<!--                            </div>-->
+
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label col-md-2">Question:</label>-->
+<!--                            <div class="col-md-10">-->
+<!--                                {{ forms.question }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label col-md-2">Option 1:</label>-->
+<!--                            <div class="col-md-10">-->
+<!--                                {{ forms.option_1 }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label col-md-2">Option 2:</label>-->
+<!--                            <div class="col-md-10">-->
+<!--                                {{ forms.option_2 }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label col-md-2">Option 3:</label>-->
+<!--                            <div class="col-md-10">-->
+<!--                                {{ forms.option_3 }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label col-md-2">Option 4:</label>-->
+<!--                            <div class="col-md-10">-->
+<!--                                {{ forms.option_4 }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label col-md-2">Marks:</label>-->
+<!--                            <div class="col-md-10">-->
+<!--                                {{ forms.marks }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label col-md-2">Answer:</label>-->
+<!--                            <div class="col-md-10">-->
+<!--                                {{ forms.answer }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label col-md-2">Active:</label>-->
+<!--                            <div class="col-md-10">-->
+<!--                                {{ forms.active }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                        <br>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

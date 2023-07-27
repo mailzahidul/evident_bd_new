@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sign Up </title>
+
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block"> <img src="{% static 'assets/img/registration.jpg' %}" alt="">
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+
+                            {% if messages %}
+                            <div class="messages">
+                                {% for message in messages %}
+                                <!-- <div class="alert" {% if message.tags %} class="{{ message.tags }}" {%endif %} role="alert">{{ message }} -->
+                                <div class="alert{% if message.tags %} {{ message.tags }} {% endif %}" role="alert">{{ message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+
+
+                            {% if forms.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                               <ul>
+                                   {% for field in forms %}
+                                   {% if field.errors %}
+                                   <li>{{ field.errors|striptags }}</li>
+                                    <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
+                                   {% endif %}
+                                   {% endfor %}
+                               </ul>
+                            </div>
+                            {% endif %}
+
+
+
+
+                            <form class="user" method="POST">
+                                {% csrf_token %}
+                                {{ forms.as_p }}
+<!--                                <div class="mb-3 row">-->
+<!--                                    <div class="col-sm-6 mb-3 mb-sm-0">-->
+<!--                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"-->
+<!--                                            placeholder="First Name" name='f_name' required>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-sm-6">-->
+<!--                                        <input type="text" class="form-control form-control-user" id="exampleLastName"-->
+<!--                                            placeholder="Last Name" name="l_name">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="mb-3">-->
+<!--                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"-->
+<!--                                        placeholder="Email Address" name="email" required>-->
+<!--                                </div>-->
+                                <div class="mb-3 row">
+                                    <div class="col-sm-12">
+                                        <label>Confirm Password:</label>
+                                        <input type="password" class="form-control form-control-user"
+                                            id="confirm_password" name="password2"
+                                            required>
+                                    </div>
+                                    <span id='message'></span>
+                                </div>
+                                <button id="signup" class="btn btn-primary w-100"> Sign Up</button>
+                            </form>
+                            <br>
+                            <br>
+                            <hr>
+<!--                            <div class="text-center">-->
+<!--                                <a class="small" href="reset_password">Forgot Password?</a>-->
+<!--                            </div>-->
+                            <div class="text-center">
+                                <a class="small" href="{% url 'login' %}">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <!-- <script src="{% static  'vendor/jquery/jquery.min.js' %}"></script> -->
+    <!-- <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script> -->
+
+    <!-- Core plugin JavaScript-->
+    <!-- <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script> -->
+
+    <!-- Custom scripts for all pages-->
+    <!-- <script src="{% static 'js/sb-admin-2.min.js' %}"></script> -->
+    <script src="{% static '' %}assets/js/jquery-3.6.0.min.js"></script>
+<script>
+    $('#id_password, #confirm_password').on('keyup', function () {
+  if ($('#id_password').val() == $('#confirm_password').val()) {
+    $('#message').html('Password Matched').css('color', 'green');
+    $('#signup').attr('type', 'submit');
+  } else
+    $('#message').html('No Password Matched').css('color', 'red');
+});
+</script>
+</body>
+
+</html>

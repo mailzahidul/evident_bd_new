@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="content container-fluid">
+
+    <div class="card-columns" style="padding: 10px; margin: 20px;">
+        <div class="card" align="centre " style="width: 32rem;">
+            <img class="card-img-top" src="https://www.ukrgate.com/eng/wp-content/uploads/2021/05/Announcing-the-Results-of-the-External-Examination-in-Mathematics-in-June-221.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Score: {{marks}}</h5>
+
+                <p class="card-text">Percentage: {{percent}}%</p>
+<!--                <p class="card-text">Time Taken: {{time}} seconds</p>-->
+                <p class="card-text">Correct answers: {{correct}}</p>
+                <p class="card-text">Incorrect answers: {{wrong}}</p>
+                <p class="card-text">Total questions: {{total}}</p>
+                <h5>All the best for next quiz!</h5>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
