@@ -33,7 +33,7 @@ def home(request):
     string_token = str(full_token)
     token = string_token.split(' ')[1][:-2]
     result = ''
-    url = 'http://127.0.0.1:8001/list_input_values'
+    url = 'http://127.0.0.1:8000/list_input_values'
     if request.method == 'POST':
         timestamp = datetime.now().strftime(datetime_format)
         input_values = request.POST['input_items']
